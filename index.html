@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeSlop — The LLM Voice Analyzer & Humanizer</title>
+    <meta name="description" content="Detect characteristic LLM Voice slop tropes and rewrite AI generated text into authentic, crisp human prose via Pollinations.ai with BYOP.">
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/@pollinations/ui@0.1.0-alpha.20/dist/connect.js"></script>
+    <script type="module" src="./pollinations-client.js"></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">DS</div>
+            <div>
+                <h1>DeSlop</h1>
+                <p>The LLM Voice Detector &amp; Humanizer · Powered by <a href="https://pollinations.ai/?ref=badge" target="_blank" rel="noopener">pollinations.ai</a></p>
+            </div>
+        </div>
+        <div class="auth-bar">
+            <span id="auth-status" class="pill">0-Pollen Offline Mode Ready</span>
+            <polli-connect app-key="pk_zM4Wvtd1rgWXRmLP" budget="5" expiry="7" models="text"></polli-connect>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="prompt-box">
+            <h2>The LLM Voice Diagnostic</h2>
+            <p>Inspired by Martin Fowler's <em>"LLM Voice"</em> essay &amp; the 100toolkit <em>deslop</em> model. Detect tropes like "delve", "testament", "tapestry", tripartite parallelisms, and false balance — then de-voice it into genuine human prose.</p>
+            
+            <div class="sample-pills" id="sample-pills"></div>
+
+            <div class="editor-grid">
+                <div class="editor-pane">
+                    <label>Input Text (Paste AI Draft or Essay)</label>
+                    <textarea id="text-input" rows="8" placeholder="Paste suspected LLM text here..."></textarea>
+                </div>
+                <div class="editor-pane">
+                    <label>De-Voiced Human Prose</label>
+                    <textarea id="text-output" rows="8" readonly placeholder="Humanized output will appear here..."></textarea>
+                </div>
+            </div>
+
+            <div class="controls-row">
+                <div class="stats-badge" id="stats-badge">Slop Index: <strong>0%</strong> · Tropes Found: 0</div>
+                <div class="action-buttons">
+                    <button id="btn-analyze-local" class="btn btn-secondary">Analyze Tropes (0 Pollen)</button>
+                    <button id="btn-deslop-live" class="btn btn-primary">De-Voice with Pollinations (BYOP)</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="analysis-results" id="analysis-results">
+            <h3>Identified LLM Voice Markers</h3>
+            <div class="tropes-list" id="tropes-list">
+                <!-- Highlighted cliché chips -->
+            </div>
+        </section>
+
+        <footer class="footer">
+            <a href="https://pollinations.ai/?ref=badge" target="_blank" rel="noopener">
+                <img src="https://raw.githubusercontent.com/pollinations/pollinations/main/packages/ui/src/brand/badge-made-with.svg" alt="Made with pollinations.ai" height="28">
+            </a>
+            <p>Built for <a href="https://github.com/pollinations/pollinations/issues/19180" target="_blank" rel="noopener">Pollinations Quest #19180</a> · Bring Your Own Pollen (BYOP)</p>
+        </footer>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+</body>
+</html>
