@@ -6,7 +6,8 @@ export class PollinationsDeslopClient {
     }
 
     getToken() {
-        return localStorage.getItem("polli:key") || localStorage.getItem("pollinations_api_key") || null;
+        const widget = typeof document !== "undefined" ? document.querySelector("polli-connect") : null;
+        return widget?.apiKey || localStorage.getItem("polli:key") || localStorage.getItem("pollinations_api_key") || null;
     }
 
     async deslopText(rawText) {
@@ -30,7 +31,7 @@ Return JSON with keys:
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "openai",
+                model: "openai/gpt-5.4-nano",
                 response_format: { type: "json_object" },
                 messages: [
                     { role: "system", content: systemPrompt },
